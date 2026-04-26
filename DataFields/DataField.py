@@ -1,3 +1,5 @@
+from datetime import datetime
+
 class StringField:
     def __set_name__(self,owner,name):
         self.private_name = "_" + name
@@ -56,6 +58,23 @@ class ProjectStatus(StringField):
         super().validate_string(value)
         if value not in ["started","inprogress","blocked","review","done"]:
             raise ValueError("Invalid project status")
+
+
+class DateField:
+    def __set_name__(self,owner,name):
+        self.private_name = "_" + name
+    
+    def __get__(self,instance,owner):
+        if instance is None:
+            return self
+        return getattr(instance,self.private_name,None)
+    
+    def __set__(self, instance, value):
+        try:
+            parsed_date = datetime.strptime(value,"%d-%m-%Y")
+        except ValueError:
+            raise ValueError("Date must be in DD-MM-YYYY format")
+        setattr(instance,self.private_name,parsed_date)
         
             
         
