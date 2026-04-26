@@ -7,13 +7,14 @@ class StringField:
             return self
         return getattr(instance,self.private_name,None)
     
-    def __set__(self, instance, value):
+    def validate_string(self,value):
         if not isinstance(value,str):
             raise ValueError("value Must be string")
         if len(value.strip())==0:
             raise ValueError("string must not be empty")
-        
-        setattr(instance,self.private_name,value)
+    def __set__(self, instance, value):
+       self.validate_string(value)
+       setattr(instance,self.private_name,value)
 
 
 class IntegerType:
@@ -48,5 +49,13 @@ class NegativeInteger(IntegerType):
          super().validate_integer(value)
          if value >= 0 :
              raise ValueError("Value must be less than zero")
+
+
+class ProjectStatus(StringField):
+    def validate_string(self, value):
+        super().validate_string(value)
+        if value not in ["started","inprogress","blocked","review","done"]:
+            raise ValueError("Invalid project status")
+        
             
         
