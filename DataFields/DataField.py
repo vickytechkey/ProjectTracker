@@ -69,12 +69,22 @@ class DateField:
             return self
         return getattr(instance,self.private_name,None)
     
-    def __set__(self, instance, value):
+    def validate_date(self,date):
         try:
-            parsed_date = datetime.strptime(value,"%d-%m-%Y")
+            parsed_date = datetime.strptime(date,"%d-%m-%Y")
         except ValueError:
             raise ValueError("Date must be in DD-MM-YYYY format")
-        setattr(instance,self.private_name,parsed_date)
+    
+    
+    def validate_start_end_date(self,start_date,end_date):
+        start_date = datetime.strptime(start_date , "%d-%m-%Y")
+        end_date = datetime.strptime(end_date,"%d-%m-%Y")
+        if start_date > end_date:
+            raise ValueError("start date should not be greater than end date")
         
-            
-        
+    
+    def __set__(self, instance, value:dict):
+       self.validate_date(value["start_date"])
+       self.validate_date(value["end_date"])
+       self.validate_start_end_date(value["start_date"],value["end_date"])
+       setattr(instance,self.private_name,value)        
