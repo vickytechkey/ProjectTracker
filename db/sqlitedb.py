@@ -7,9 +7,7 @@ class SqliteDB(MasterDatabase):
         self.DBName = DBName
     
     def CreateConnection(self):
-        conn = sqlite3.connect(self.DBName)
-        cursor = conn.cursor()
-        return cursor
+        return sqlite3.connect(self.DBName)
     
     def CreateDB(self):
         cursor = self.CreateConnection()
@@ -18,20 +16,27 @@ class SqliteDB(MasterDatabase):
         return True
     
     def Connection(self):
-        conn = self.CreateConnection()
-        return conn
+        pass
     
     def CreateTable(self):
         create_table_sql_path = "./db/sql/CreateTable.sql"
         with open(create_table_sql_path,"r+") as f:
             create_table_sql = f.read()
         conn = self.CreateConnection()
-        conn.executescript(create_table_sql)
-        print(conn)
+        cursor = conn.cursor()
+        cursor.executescript(create_table_sql)
+        conn.commit()
+        conn.close()
         
     
     def QueryExecution(self,query):
-        pass
+        if len(query.strip())==0:
+            raise ValueError("query should not be empty")
+        conn = self.CreateConnection()
+        cursor = conn.cursor()
+        cursor.execute(query)
+        conn.commit()
+        conn.close()
     
     def SelectQuery(self,query):
         pass
