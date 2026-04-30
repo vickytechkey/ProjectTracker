@@ -26,7 +26,7 @@ class SqliteDB(MasterDatabase):
         with open(create_table_sql_path,"r+") as f:
             create_table_sql = f.read()
         conn = self.CreateConnection()
-        conn.execute(create_table_sql)
+        conn.executescript(create_table_sql)
         print(conn)
         
     
