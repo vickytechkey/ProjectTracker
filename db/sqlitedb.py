@@ -39,4 +39,10 @@ class SqliteDB(MasterDatabase):
         conn.close()
     
     def SelectQuery(self,query):
-        pass
+        if len(query.strip())==0:
+            raise ValueError("query should not be empty")
+        conn = self.CreateConnection()
+        cursor = conn.cursor()
+        cursor.execute(query)
+        rows = cursor.fetchall()
+        return rows
