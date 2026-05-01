@@ -1,11 +1,10 @@
-from projectManagement.createproject import CreateProject
+from projectManagement.projects.resolve_project import ResolveProject
 from projectManagement.install import InstallationModule
 
 i = InstallationModule()
 
-
-c = CreateProject("test_project1",{"start_date":"01-05-2025","end_date":"01-05-2026"},10)
-c.CreateProject()
+r = ResolveProject(1)
+r.CloseProject()
 
 
 

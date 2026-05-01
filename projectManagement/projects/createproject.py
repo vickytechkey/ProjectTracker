@@ -1,6 +1,7 @@
 from DataFields.DataField import IntegerType,PositiveInteger,StringField,DateField,ProjectStatus
 from db.sqlitedb import SqliteDB
 from DataFields.generic_values import GenericValue
+
 class CreateProject:
     projectName = StringField()
     project_start_end_date = DateField()
@@ -24,5 +25,7 @@ class CreateProject:
         VALUES ('{self.projectName}','{start_date}','{end_date}',{self.plannedEfforts},{self.spendEfforts})
         '''
         self.db_connection.QueryExecution(insert_sql)
+        return True
+        
         
         

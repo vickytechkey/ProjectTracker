@@ -33,10 +33,16 @@ class SqliteDB(MasterDatabase):
         if len(query.strip())==0:
             raise ValueError("query should not be empty")
         conn = self.CreateConnection()
-        cursor = conn.cursor()
-        cursor.execute(query)
-        conn.commit()
-        conn.close()
+        try:
+            cursor = conn.cursor()
+            cursor.execute(query)
+            conn.commit()
+            return cursor.rowcount
+        except Exception as e:
+            print("Query Failed:" , e)
+            conn.rollback()
+        finally:
+            conn.close()
     
     def SelectQuery(self,query):
         if len(query.strip())==0:
