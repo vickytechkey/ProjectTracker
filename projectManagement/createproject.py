@@ -9,7 +9,7 @@ class CreateProject:
     projectStatus = ProjectStatus()
     db_connection = SqliteDB(GenericValue.project_tracker_db)
     
-    def __init__(self,projectName,project_start_end_date,plannedEfforts,spendEfforts):
+    def __init__(self,projectName,project_start_end_date,plannedEfforts,spendEfforts=0):
         self.projectName = projectName
         self.project_start_end_date = project_start_end_date
         self.plannedEfforts = plannedEfforts
@@ -17,8 +17,12 @@ class CreateProject:
         self.projectStatus = "NOT_STARTED"
     
     def CreateProject(self):
-        insert_sql = '''
-        
+        start_date = self.project_start_end_date["start_date"]
+        end_date = self.project_start_end_date["end_date"]
+        insert_sql = f'''
+        INSERT INTO PROJECTS (PROJECT_NAME,PROJECT_START_DATE,PROJECT_END_DATE,PLANNED_EFFORTS,SPENDED_EFFORTS) 
+        VALUES ('{self.projectName}','{start_date}','{end_date}',{self.plannedEfforts},{self.spendEfforts})
         '''
+        self.db_connection.QueryExecution(insert_sql)
         
         
