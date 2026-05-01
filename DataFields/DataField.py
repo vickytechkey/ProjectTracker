@@ -56,7 +56,7 @@ class NegativeInteger(IntegerType):
 class ProjectStatus(StringField):
     def validate_string(self, value):
         super().validate_string(value)
-        if value not in ["started","inprogress","blocked","review","done"]:
+        if value not in ["NOT_STARTED","STARTED","IN_PROGRESS","BLOCKED","REVIEW","DONE"]:
             raise ValueError("Invalid project status")
 
 
