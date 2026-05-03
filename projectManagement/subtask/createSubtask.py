@@ -1,7 +1,7 @@
 import json
 from datetime import date
 from DataFields.DataField import StringField,DateField,PositiveInteger,IntegerType
-from generic.generic_values import GenericValue,FileCreator
+from generic.generic_values import GenericValue,FileFunctions
 from db.sqlitedb import SqliteDB
 
 
@@ -48,7 +48,6 @@ class CreateSubTask:
         # inserting the subtask in the project
         project_file["sub_tasks"].append(subtask_template)
         # editing the project file
-        with open(project_file_name,"w+") as f:
-            json.dump()
+        FileFunctions.CreateFile(project_file_name,project_file)
         
         

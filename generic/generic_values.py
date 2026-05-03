@@ -6,7 +6,7 @@ class GenericValue:
     project_folder = "./projects/"
 
 
-class FileCreator:
+class FileFunctions:
     Filename  = StringField()
     def __init__(self,filename,content):
         self.Filename = filename
@@ -16,3 +16,8 @@ class FileCreator:
         with open(self.Filename,"w+",encoding="utf-8") as f:
             json.dump(self.content,f,indent=4)
         print(self.Filename)
+    
+    def ReadFile(self):
+        with open(self.Filename,"r+",encoding="utf-8") as f:
+            content = json.load(f)
+        return content
