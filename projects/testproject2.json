@@ -1,0 +1,17 @@
+{
+    "project_name": "testproject2",
+    "start_date": "01-01-2025",
+    "end_date": "01-01-2026",
+    "sub_tasks": [
+        {
+            "subTask_name": "testsubtask2",
+            "subTask_id": 0,
+            "creationDate": "03-05-2026",
+            "start_date": "01-01-2025",
+            "end_date": "01-01-2026",
+            "planned_efforts": 10,
+            "spend_efforts": 0,
+            "correspondence": []
+        }
+    ]
+}

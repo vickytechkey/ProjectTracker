@@ -1,6 +1,6 @@
 from DataFields.DataField import IntegerType,PositiveInteger,StringField,DateField,ProjectStatus
 from db.sqlitedb import SqliteDB
-from generic.generic_values import GenericValue,FileFunctions
+from generic.generic_values import GenericValue,JsonFileCreater
 import json
 
 
@@ -33,7 +33,7 @@ class CreateProject:
         project_template["project_name"] = self.projectName
         project_template["start_date"] = start_date
         project_template["end_date"] = end_date
-        f = FileFunctions(file_path,project_template)
+        f = JsonFileCreater(file_path,project_template)
         f.CreateFile()
         self.db_connection.QueryExecution(insert_sql)
         return True
