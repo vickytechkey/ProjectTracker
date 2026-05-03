@@ -19,8 +19,7 @@ class AddingMessage:
         project_file = f"./projects/{self.project_name}.json"
         project_content = JsonFileCreater(project_file,"").ReadFile()
         # Reading subtasks correspondence
-        print(type(project_content))
-        print(project_content)
+        print(project_content['sub_tasks'][0])
         templatejson = "./projectManagement/subtask/correspondence_template.json"
         correspondence_template = JsonFileCreater(templatejson,"").ReadFile()
         correspondence_template["correspondence_id"] = len(project_content["sub_tasks"][self.subtask_id]["correspondence"])

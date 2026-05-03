@@ -21,3 +21,5 @@ class MasterDatabase(ABC):
     @abstractmethod
     def SelectQuery(self,query):
         pass
+
+

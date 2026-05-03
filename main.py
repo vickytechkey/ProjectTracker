@@ -4,12 +4,17 @@ from projectManagement.projects.createproject import CreateProject
 
 from projectManagement.subtask.createSubtask import CreateSubTask
 
-i = InstallationModule()
+from projectManagement.subtask.adding_correspondence import AddingMessage
+
+# i = InstallationModule()
 # c = CreateProject("testproject2",{"start_date":"01-01-2025","end_date":"01-01-2026"},10)
 # c.CreateProject()
 
-c1 = CreateSubTask("testsubtask2","01-01-2025","01-01-2026",10,1)
+c1 = CreateSubTask("testsubtask3","01-01-2025","01-01-2026",10,1)
 c1.CreateSubTask()
+
+m = AddingMessage("testproject2",0,"testing message")
+m.createcorrespondence()
 
 
 
