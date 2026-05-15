@@ -1,4 +1,7 @@
 from abc import ABC,abstractmethod
+from db.mongo import MongoDB
+
+
 
 class MasterDatabase(ABC):
     
@@ -21,5 +24,6 @@ class MasterDatabase(ABC):
     @abstractmethod
     def SelectQuery(self,query):
         pass
+
 
 
