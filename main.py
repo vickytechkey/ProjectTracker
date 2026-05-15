@@ -1,20 +1,13 @@
-from projectManagement.projects.resolve_project import ResolveProject
-from projectManagement.install import InstallationModule
-from projectManagement.projects.createproject import CreateProject
+from db.mongo import MongoDB
 
-from projectManagement.subtask.createSubtask import CreateSubTask
 
-from projectManagement.subtask.adding_correspondence import AddingMessage
-
-# i = InstallationModule()
-# c = CreateProject("testproject2",{"start_date":"01-01-2025","end_date":"01-01-2026"},10)
-# c.CreateProject()
-
-c1 = CreateSubTask("testsubtask3","01-01-2025","01-01-2026",10,1)
-c1.CreateSubTask()
-
-m = AddingMessage("testproject2",0,"testing message")
-m.createcorrespondence()
+insert_data = {
+    "name":"vicky",
+    "age":25,
+    "gender":"male"
+}
+m = MongoDB("Testcollection",findkey={"name":"vignesh"})
+m.findOne()
 
 
 
