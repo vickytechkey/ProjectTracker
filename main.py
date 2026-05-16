@@ -2,12 +2,13 @@ from db.mongo import MongoDB
 
 
 insert_data = {
-    "name":"vicky",
+    "name":"sample2",
     "age":25,
     "gender":"male"
 }
-m = MongoDB("Testcollection",findkey={"name":"vignesh"})
-m.findOne()
+m = MongoDB("Testcollection",filterkey={"name":"sample2"})
+m.deleteMany()
+
 
 
 
