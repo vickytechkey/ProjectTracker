@@ -21,16 +21,12 @@ class CreateProject:
         json_file_path = f""
         start_date = self.project_start_end_date["start_date"]
         end_date = self.project_start_end_date["end_date"]
-        insert_sql = f'''
-        INSERT INTO PROJECTS (PROJECT_NAME,PROJECT_START_DATE,PROJECT_END_DATE,PLANNED_EFFORTS,SPENDED_EFFORTS) 
-        VALUES ('{self.projectName}','{start_date}','{end_date}',{self.plannedEfforts},{self.spendEfforts})
-        '''
         with open("./projectManagement/projects/project_template.json") as f:
             project_template = json.load(f)
         project_template["project_name"] = self.projectName
         project_template["start_date"] = start_date
         project_template["end_date"] = end_date
-        db_connection = MongoDB(collectionname=self.projectName,insertdata=project_template)
+        db_connection = MongoDB(collectionname="Projects",insertdata=project_template)
         db_connection.insertData()
         return True
         
