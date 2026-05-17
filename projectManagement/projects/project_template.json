@@ -1,8 +1,5 @@
 {
     "project_name":"<project_name>",
     "start_date":"<start_date>",
-    "end_date":"<end_date>",
-    "sub_tasks":[
-        
-    ]
+    "end_date":"<end_date>"
 }
