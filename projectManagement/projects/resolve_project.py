@@ -1,25 +1,33 @@
 from DataFields.DataField import PositiveInteger
-from db.sqlitedb import SqliteDB
-from generic.generic_values import GenericValue
+from db.mongo import MongoDB
 
 class ResolveProject:
     projectId = PositiveInteger()
     
     
-    def __init__(self,projectId):
-        self.projectId = projectId
-        self.db = SqliteDB(GenericValue.project_tracker_db)
+    def __init__(self,projectname):
+        self.projectname = projectname
+        self.connection = MongoDB(collectionname="Projects",findkey={"project_name":self.projectname},filterkey={"project_name":self.projectname},updatekey={"status":"RESOLVED"})
+
+    def checkingprojectexists(self):
+        res = self.connection.findOne()
+        return res is not None
     
-    
-    def CloseProject(self):
-        query = f'''
-        UPDATE PROJECTS SET STATUS='DONE' WHERE PROJECT_ID='{self.projectId}'
-        '''
-        affected_rows = self.db.QueryExecution(query)
-        if affected_rows > 0:
-            return f"project Resolved successfully"
-        else:
-            return "Project already resolved or it might be out of date"
+    def closeproject(self):
+        project_count  = self.checkingprojectexists()
+        if project_count:
+            res = self.connection.updateOne()
+            if res["modified_count"] > 0:
+                return True
+            else:
+                return False
+                
+        
+        
+        
+        
+        
+        
     
         
         
