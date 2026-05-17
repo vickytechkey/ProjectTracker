@@ -1,6 +1,5 @@
 from DataFields.DataField import IntegerType,PositiveInteger,StringField,DateField,ProjectStatus
 from db.mongo import MongoDB
-from generic.generic_values import GenericValue,JsonFileCreater
 import json
 
 
