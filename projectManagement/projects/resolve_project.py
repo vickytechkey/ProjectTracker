@@ -1,8 +1,6 @@
-from DataFields.DataField import PositiveInteger
 from db.mongo import MongoDB
 
 class ResolveProject:
-    projectId = PositiveInteger()
     
     
     def __init__(self,projectname):
