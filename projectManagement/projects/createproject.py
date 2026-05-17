@@ -1,5 +1,5 @@
 from DataFields.DataField import IntegerType,PositiveInteger,StringField,DateField,ProjectStatus
-from db.sqlitedb import SqliteDB
+from db.mongo import MongoDB
 from generic.generic_values import GenericValue,JsonFileCreater
 import json
 
@@ -10,7 +10,6 @@ class CreateProject:
     plannedEfforts = PositiveInteger()
     spendEfforts = PositiveInteger()
     projectStatus = ProjectStatus()
-    db_connection = SqliteDB(GenericValue.project_tracker_db)
     
     def __init__(self,projectName,project_start_end_date,plannedEfforts,spendEfforts=0):
         self.projectName = projectName
@@ -29,14 +28,13 @@ class CreateProject:
         '''
         with open("./projectManagement/projects/project_template.json") as f:
             project_template = json.load(f)
-        file_path = GenericValue.project_folder+f"{self.projectName}.json"
         project_template["project_name"] = self.projectName
         project_template["start_date"] = start_date
         project_template["end_date"] = end_date
-        f = JsonFileCreater(file_path,project_template)
-        f.CreateFile()
-        self.db_connection.QueryExecution(insert_sql)
+        db_connection = MongoDB(collectionname=self.projectName,insertdata=project_template)
+        db_connection.insertData()
         return True
+        
         
         
         
