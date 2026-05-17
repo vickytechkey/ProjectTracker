@@ -2,5 +2,7 @@
     "correspondence_date":"<correspondence_date>",
     "user":"<user>",
     "message":"<message>",
-    "deleted":"NO"
+    "deleted":"NO",
+    "subtask_name":"<sub task name>",
+    "project_name":"<project_name>"
 }
