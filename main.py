@@ -2,7 +2,9 @@ from db.mongo import MongoDB
 from projectManagement.projects.createproject import CreateProject
 from projectManagement.subtask.createSubtask import CreateSubTask
 from projectManagement.subtask.adding_correspondence import AddingMessage
-from projectManagement.projects.resolve_project import ResolveProject
+from projectManagement.projects.blocked_project import BlockProject
+from projectManagement.subtask.subtask_resolved import ResolvedSubtask
+
 
 # c = CreateProject(projectName="Testproject",project_start_end_date={"start_date":"17-05-2026","end_date":"20-05-2026"},plannedEfforts=10)
 # c.CreateProject()
@@ -13,8 +15,11 @@ from projectManagement.projects.resolve_project import ResolveProject
 # c1 = AddingMessage(projectname="Testproject",subtaskname="planning",message="Test Message")
 # c1.createcorrespondence()
 
-c2 = ResolveProject(projectname="Testproject")
-c2.closeproject()
+# c2 = BlockProject(projectname="Testproject")
+# c2.blockproject()
+
+s = ResolvedSubtask(projectname="Testproject",subtaskname="planning")
+s.resolve_task()
 
 
 
