@@ -1,20 +1,22 @@
-import logo from './logo.svg';
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import './App.css';
 import Navbar from './components/navbar/navbar';
 import Footer from './components/footer/Footer';
+import Login from './pages/Login';
+import Home from './pages/home';
 
 function App() {
   return (
-   <>
-     
 
+    <>
       <Navbar />
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/login" element={<Login />} />
+        </Routes>
+      </BrowserRouter>
 
-      <div className="content">
-        <h1 style={{color:"white"}}>
-          Welcome
-        </h1>
-      </div>
 
       <Footer />
     </>
