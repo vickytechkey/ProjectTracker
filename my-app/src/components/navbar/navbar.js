@@ -14,11 +14,11 @@ function Navbar() {
         </li>
 
         <li>
-          <a href="/about-us">About Us</a>
+          <a href="/create-project">Create project</a>
         </li>
 
         <li>
-          <a href="/contact-us">Contact Us</a>
+          <a href="/create-subtask">Create subtasks</a>
         </li>
       </ul>
     </nav>

@@ -4,6 +4,8 @@ import Navbar from './components/navbar/navbar';
 import Footer from './components/footer/Footer';
 import Login from './pages/Login';
 import Home from './pages/home';
+import CreateProject from "./pages/CreateProject";
+import CreateSubTask from "./pages/CreateSubTask";
 
 function App() {
   return (
@@ -14,6 +16,8 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/create-project" element={<CreateProject />} />
+          <Route path="/create-subtask" element={<CreateSubTask />} />
         </Routes>
       </BrowserRouter>
 
