@@ -5,7 +5,7 @@ function Navbar() {
   return (
     <nav className="navbar">
       <div className="logo">
-        MyWebsite
+        Project Tracker Application
       </div>
 
       <ul className="nav-links">

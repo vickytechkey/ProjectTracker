@@ -5,7 +5,7 @@ function Footer() {
   return (
     <footer className="footer">
       <div className="footer-content">
-        <h3>MyWebsite</h3>
+        <h3>Project Tracker Application</h3>
 
         <ul className="footer-links">
           <li>
@@ -13,11 +13,11 @@ function Footer() {
           </li>
 
           <li>
-            <a href="/about-us">About Us</a>
+            <a href="/create-project">Create project</a>
           </li>
 
           <li>
-            <a href="/contact-us">Contact Us</a>
+            <a href="/create-subtask">Create subtasks</a>
           </li>
         </ul>
 
