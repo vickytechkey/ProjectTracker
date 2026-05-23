@@ -1,6 +1,7 @@
 import logo from './logo.svg';
 import './App.css';
 import Navbar from './components/navbar/navbar';
+import Footer from './components/footer/Footer';
 
 function App() {
   return (
@@ -8,6 +9,7 @@ function App() {
       <Navbar />
 
       <h1>Welcome to Home Page</h1>
+      <Footer />
     </div>
   );
 }
