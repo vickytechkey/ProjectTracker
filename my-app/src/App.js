@@ -6,6 +6,8 @@ import Login from './pages/Login';
 import Home from './pages/home';
 import CreateProject from "./pages/CreateProject";
 import CreateSubTask from "./pages/CreateSubTask";
+import Dashboard from "./pages/dashboard/Dashboard";
+import SubTaskDetails from "./pages/subtasks/SubTaskDetails";
 
 function App() {
   return (
@@ -14,11 +16,12 @@ function App() {
       <Navbar />
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Home />} />
+          <Route path="/" element={<Dashboard />} />
           <Route path="/login" element={<Login />} />
           <Route path="/create-project" element={<CreateProject />} />
           <Route path="/create-subtask" element={<CreateSubTask />} />
-        </Routes>
+          <Route path="/subtask-details" element={<SubTaskDetails/>}/>
+          </Routes>
       </BrowserRouter>
 
 
