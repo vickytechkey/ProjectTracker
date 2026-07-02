@@ -9,10 +9,11 @@ class AddingMessage:
     creation_date = date.today()
     message = StringField()
     
-    def __init__(self,projectname,subtaskname,message):
+    def __init__(self,projectname,subtaskname,message,user="User"):
         self.project_name = projectname
         self.subtaskname = subtaskname
         self.message = message
+        self.user = user
     
     def createcorrespondence(self):
         templatejson = "./projectManagement/subtask/correspondence_template.json"
@@ -21,6 +22,7 @@ class AddingMessage:
         correspondence_template["message"] = self.message
         correspondence_template["subtask_name"] = self.subtaskname
         correspondence_template["project_name"] = self.project_name
+        correspondence_template["user"] = self.user
         db_connection = MongoDB(collectionname="correspondence",insertdata=correspondence_template)
         db_connection.insertData()
         

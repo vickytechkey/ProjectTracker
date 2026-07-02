@@ -12,7 +12,7 @@ class ResolvedSubtask:
     def checksubtask(self):
         db = MongoDB(collectionname="subtasks",findkey={"subTask_name":self.subtask_name,"project_name":self.project_name})
         res = db.findOne()
-        return res[0] is not None
+        return res is not None
     
     def resolve_task(self):
         check_project = self.checksubtask()

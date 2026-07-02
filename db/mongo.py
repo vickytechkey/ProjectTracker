@@ -27,7 +27,7 @@ class MongoDB:
         res = collection.find_one(self.findkey)
         return res
     
-    def findOne(self):
+    def find(self):
         collection = self.db[self.collectionname]
         res = collection.find(self.findkey)
         return res
